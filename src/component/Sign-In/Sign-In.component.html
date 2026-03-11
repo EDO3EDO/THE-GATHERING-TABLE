@@ -1,0 +1,55 @@
+<form class=" container my-5 " [formGroup]="SignIn" (ngSubmit)="logs(SignIn)"   >
+
+
+
+
+      <div class="w-75 hello  mx-auto bg-white p-4 shadow border rounded">
+
+
+<label class="form-label" for="">Email</label>
+<input class="form-control text-secondary" formControlName="Email" type="email" placeholder="@example.com" >
+@if(SignIn.get("Email")?.invalid && SignIn.get("Email")?.touched){
+<div>
+  @if (SignIn.get("Email")?.getError("required")) {
+    <p class="text-danger mt-2 ms-3">The Email Is required</p>
+  }
+  @if (SignIn.get("Email")?.getError("email")) {
+    <p class="text-danger mt-2 ms-3">Please enter a valid email (must include @)</p>
+  }
+</div>
+}
+
+
+
+<label class="form-label" for="">Password</label>
+<input class="form-control" formControlName="Password" type="Password"  placeholder="********" >
+
+
+
+@if(SignIn.get("Password")?.invalid && SignIn.get("Password")?.touched){
+<div>
+  @if (SignIn.get("Password")?.getError("required")) {
+    <p class="text-danger mt-2 ms-3">The Password Is required</p>
+  }
+  @if(SignIn.get("Password")?.getError("minlength")){
+    <p class="text-danger mt-2 ms-3">Min Length Is 8 Caracters</p>
+  }
+  @if(SignIn.get("Password")?.getError("maxlength")){
+    <p class="text-danger mt-2 ms-3">Max Length Is 12 Caracters</p>
+  }
+
+</div>
+}
+
+  <button [disabled]="SignIn.invalid" class="btn btn-dark mt-3 mb-2 w-100">submit</button>
+
+
+
+<a class="ms-2 mb text-decoration-none text-dark">ForgetPassword</a>
+
+</div>
+
+
+</form>
+
+

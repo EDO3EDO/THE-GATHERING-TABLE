@@ -1,0 +1,91 @@
+<form class="container my-5 " [formGroup]="SignIn_form" (ngSubmit)="logs(SignIn_form)">
+  <div class="w-75 hello border rounded bg-white shadow mx-auto p-5  ">
+    <label class="form-label"  >UserName</label>
+    <input class="form-control" formControlName="name" type="text" placeholder="UserName">
+
+    @if (SignIn_form.get("name")?.invalid && SignIn_form.get("name")?.touched) {
+      <div>
+        @if (SignIn_form.get("name")?.getError("required")) {
+          <p class="text-danger mt-2 ms-3">The UserName Is Required</p>
+        }
+        @if (SignIn_form.get("name")?.getError("minlength")) {
+          <p class="text-danger mt-2 ms-3">Min Length Is 3 Caracters </p>
+        }
+        @if (SignIn_form.get("name")?.getError("maxlength")) {
+          <p class="text-danger mt-2 ms-3"> Max Length Is 10 Caracters </p>
+        }
+      </div>
+    }
+
+
+
+
+
+    <label class="form-label" for="">Email</label>
+    <input class="form-control" formControlName="email" type="email" placeholder="@example.com">
+
+    @if (SignIn_form.get("email")?.invalid && SignIn_form.get("email")?.touched) {
+      <div>
+        @if (SignIn_form.get("email")?.getError("required")) {
+          <p class="text-danger mt-2 ms-3">The Email Is Required</p>
+        }
+        @if (SignIn_form.get("email")?.getError("email")) {
+          <p class="text-danger mt-2 ms-3">Please enter a valid email (must include @) </p>
+        }
+
+      </div>
+    }
+
+    <label class="form-label" for="">Password</label>
+    <input class="form-control" formControlName="password" type="Password" placeholder="********">
+
+        @if (SignIn_form.get("password")?.invalid && SignIn_form.get("password")?.touched) {
+      <div>
+        @if (SignIn_form.get("password")?.getError("required")) {
+          <p class="text-danger mt-2 ms-3">The Password Is Required</p>
+        }
+        @if (SignIn_form.get("password")?.getError("minlength")) {
+          <p class="text-danger mt-2 ms-3">Min Length Is 8 Caracters</p>
+        }
+        @if (SignIn_form.get("password")?.getError("maxlength")) {
+          <p class="text-danger mt-2 ms-3">Max Length Is 12 Caracters</p>
+        }
+
+      </div>
+    }
+
+
+
+
+
+    <label class="form-label" for="">Repassword</label>
+    <input class="form-control" formControlName="repassword" type="password" placeholder="********">
+
+
+
+
+          @if (SignIn_form.get("repassword")?.invalid && SignIn_form.get("repassword")?.touched) {
+      <div>
+        @if (SignIn_form.get("repassword")?.getError("required")) {
+          <p class="text-danger mt-2 ms-3">The Repassword Is Required</p>
+        }
+        @if (SignIn_form.get("repassword")?.getError("PasswordMisMatch")) {
+          <p class="text-danger mt-2 ms-3">The Password Is Mis Match</p>
+        }
+
+      </div>
+    }
+
+
+    <button [disabled]="SignIn_form.invalid" class="btn btn-dark text-white my-3 w-100 space-right2">CreatAccont</button>
+
+
+
+        <p class="text-center mt-3 mb-0">
+      Already have an account? <a class=" text-decoration-none" routerLink="/Sign_In">Sign_In</a>
+    </p>
+
+  </div>
+</form>
+
+<router-outlet></router-outlet>

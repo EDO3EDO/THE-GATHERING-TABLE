@@ -1,0 +1,15 @@
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      @for (recap of restrunt ; track $index) {
+<div class="col-6 col-md-3 col-sm-4 my-3">
+<a class=" text-decoration-none" href="#">  <img class="w-100 object-fit-cover rounded-3
+  " [src]="recap.image_url " alt="will not show">
+  <p class="text-white text-center fw-bold">{{recap.title}}</p></a>
+</div>
+      }
+    </div>
+  </div>
+
